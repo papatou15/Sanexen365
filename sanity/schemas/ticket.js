@@ -45,12 +45,30 @@ export default{
         },
         {
             type: 'string',
-            name: 'test',
-            title: 'test',
-            hidden: ({document, value}) => /*!document?.issue == 'break'*/{
-                console.log(document?.issue);
-            }
-            
+            name: 'issueBreakOptions',
+            title: 'Précision du bris',
+            options: {
+                list: [
+                    {title: 'Blanc 1/2"', value: 'white'},
+                    {title: 'Bleu 2" 1/2', value: 'blue'},
+                    {title: 'Jaune 6"', value: 'yellow'},
+                    {title: 'Excavation', value: 'excavation'},
+                    {title: 'Autre', value: 'other'}
+                ]
+            },
+            hidden: ({ document }) => document.issue !== 'break'
+        },
+        {
+            type: 'string',
+            name: 'issueNoWaterOptions',
+            title: 'Précision du problème',
+            options: {
+                list: [
+                    {title: 'Hose déconnectée', value: 'disconnected'},
+                    {title: 'Autre', value: 'other'}
+                ]
+            },
+            hidden: ({ document }) => document.issue !== 'nowater'
         },
         {
             type: 'text',
