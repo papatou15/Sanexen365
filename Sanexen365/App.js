@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import Connexion from './Connexion.jsx';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Sanexen365</Text>
+      <Connexion></Connexion>
       <StatusBar style="auto" />
     </View>
   );

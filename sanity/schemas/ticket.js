@@ -75,6 +75,19 @@ export default{
             name: 'description',
             title: 'Description/Information utile',
             validation: Rule => Rule.required()
+        },
+        {
+            type: 'string',
+            name: 'status',
+            title: 'Statut du ticket',
+            description: "Invisible pour l'appelant. Ne pas changer ici à moins de problème dans l'app.",
+            options: {
+                list: [
+                    {title: 'Nouveau', value: 'new'},
+                    {title: 'En cours', value: 'ongoing'},
+                    {title: 'Terminé', value: 'finished'}
+                ]
+            }
         }
     ]
 }
