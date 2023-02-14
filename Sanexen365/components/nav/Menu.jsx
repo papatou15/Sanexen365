@@ -1,5 +1,4 @@
 import { StyleSheet, View, ScrollView, Text, Animated, Pressable } from "react-native";
-import { Route, Link } from "react-router-native";
 import SVGWaves from "../../utils/SVGWaves";
 import { Shadow } from "react-native-shadow-2";
 import { logOut } from "../../connexion/fakeAuth";

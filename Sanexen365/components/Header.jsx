@@ -24,6 +24,12 @@ export default function Header({userLoggedIn, email, setEmail, password, setPass
 };
 
 const styles = StyleSheet.create({
+    header:{
+        position: 'absolute',
+        top: 0,
+        width: '100%',
+        height: '100%',
+    },
     burgerWrapper: {
         backgroundColor: '#97E06F',
         position: 'absolute',

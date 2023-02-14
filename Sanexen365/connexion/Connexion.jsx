@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, TextInput, Pressable, Alert, Animated, SafeAreaView, Button } from 'react-native';
 import React, { useState, useRef } from 'react';
-import Svg, { Path } from 'react-native-svg';
 import SVGWaves from '../utils/SVGWaves';
 import { logIn } from './fakeAuth';
 import { Shadow } from 'react-native-shadow-2';

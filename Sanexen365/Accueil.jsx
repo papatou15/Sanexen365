@@ -2,11 +2,11 @@ import { StyleSheet, Text, View, SafeAreaView, Keyboard, Animated, Pressable } f
 import Header from './components/Header';
 import Burger from './components/nav/Burger';
 
-export default function Accueil() {
+export default function Accueil({ userLoggedIn }) {
     return(
-        <SafeAreaView style={styles.homePage}>
-            <Header></Header>
-        </SafeAreaView>
+        <View style={styles.homePage}>
+            
+        </View>
     )
 }
 
@@ -20,5 +20,8 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    header: {
+        
     }
 });

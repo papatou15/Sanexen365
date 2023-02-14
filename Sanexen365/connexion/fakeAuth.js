@@ -1,14 +1,14 @@
 function logIn( user, password, userLoggedIn ){
     const authUser = user;
     const authPassword = password;
-    userLoggedIn = true;
+    userLoggedIn(true);
     console.log(userLoggedIn + authUser + authPassword);
     
     return(userLoggedIn && authUser && authPassword);
 }
 
 function logOut( user, password, userLoggedIn ){
-    userLoggedIn = false;
+    userLoggedIn(false);
     user = null;
     password = null;
 
