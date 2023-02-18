@@ -2,6 +2,7 @@ import { StyleSheet, View } from "react-native";
 import { useState, useRef, useEffect } from "react";
 import {Burger} from "./nav/Burger";
 import Menu from "./nav/Menu";
+import { Color, Styles, Fonts } from "../design/design";
 
 export default function Header({userLoggedIn, email, setEmail, password, setPassword}) {
     const [navOpenState, setNavOpenState] = useState(false);
@@ -15,10 +16,10 @@ export default function Header({userLoggedIn, email, setEmail, password, setPass
     console.log("Menu " + navOpenState);
     return(
         <View style={styles.header}>
-            <Menu navOpenState={navOpenState} burgerRef={burgerRef} userLoggedIn={userLoggedIn} email={email} password={password} setEmail={setEmail} setPassword={setPassword} toggleMenu={toggleMenu}/>
             <View style={styles.burgerWrapper}>
                 <Burger ref={burgerRef} toggleMenu={toggleMenu} navOpenState={navOpenState} />
             </View>
+            <Menu navOpenState={navOpenState} burgerRef={burgerRef} userLoggedIn={userLoggedIn} email={email} password={password} setEmail={setEmail} setPassword={setPassword} toggleMenu={toggleMenu}/>
         </View>
     )
 };
@@ -29,6 +30,8 @@ const styles = StyleSheet.create({
         top: 0,
         width: '100%',
         height: '100%',
+        pointerEvents: 'none'
+
     },
     burgerWrapper: {
         backgroundColor: '#97E06F',
@@ -36,11 +39,11 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         width: '100%',
-        height: 100,
+        height: Styles[2],
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'flex-end',
-        paddingRight: 25
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        paddingRight: 25,
     }
 })

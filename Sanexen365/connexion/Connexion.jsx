@@ -3,13 +3,27 @@ import React, { useState, useRef } from 'react';
 import SVGWaves from '../utils/SVGWaves';
 import { logIn } from './fakeAuth';
 import { Shadow } from 'react-native-shadow-2';
+import { Colors, Styles, Fonts } from '../design/design';
+import Sanity from '../utils/Sanity';
+
+const query = `*[_type == "ticket"]{
+    _id,
+    adress,
+    nom,
+    issue,
+    issueBreakOptions,
+    description,
+    status
+}`
+
+async function getQuery(){
+    await Sanity.fetch(query);
+}
+
+console.log(getQuery())
 
 export default function Connexion({ userLoggedIn, email, password, setEmail, setPassword }){
     const fadeAnim = useRef(new Animated.Value(1)).current;
-
-    const manageLogIn = () => {
-        userLoggedIn = true;
-    };
 
     const fadeIn = () => {
     // Will change fadeAnim value to 1 in 5 seconds
@@ -37,7 +51,7 @@ export default function Connexion({ userLoggedIn, email, password, setEmail, set
                     customWidth="495.621"
                     customHeight="353.332"
                     customViewBox="0 0 495.621 353.332"
-                    customFillColor="#6ca150"
+                    customFillColor={Colors[1]}
                     customPattern="M435.079,157.865C435.079,145.293,430,20.338,430,0H0V250.344s68.839-71.857,176.339-96.56S435.079,157.865,435.079,157.865Z"
                     customTransform="rotate(11.5 8.562 289.899)"
                 />
@@ -46,7 +60,7 @@ export default function Connexion({ userLoggedIn, email, password, setEmail, set
                     customWidth="448"
                     customHeight="268.344"
                     customViewBox="0 0 448 268.344"
-                    customFillColor="#97e06f"
+                    customFillColor={Colors[0]}
                     customPattern="M430,142.9V0H0V250.344s54.754-98.827,211.018-116.053S430,142.9,430,142.9Z"
                 />
                 <SVGWaves 
@@ -54,7 +68,7 @@ export default function Connexion({ userLoggedIn, email, password, setEmail, set
                     customWidth="495.621"
                     customHeight="353.332"
                     customViewBox="0 0 495.621 353.332"
-                    customFillColor="#6ca150"
+                    customFillColor={Colors[1]}
                     customPattern="M435.079,157.865C435.079,145.293,430,20.338,430,0H0V250.344s68.839-71.857,176.339-96.56S435.079,157.865,435.079,157.865Z"
                     customTransform="rotate(11.5 8.562 289.899)"
                 />
@@ -63,7 +77,7 @@ export default function Connexion({ userLoggedIn, email, password, setEmail, set
                     customWidth="448"
                     customHeight="268.344"
                     customViewBox="0 0 448 268.344"
-                    customFillColor="#97e06f"
+                    customFillColor={Colors[0]}
                     customPattern="M430,142.9V0H0V250.344s54.754-98.827,211.018-116.053S430,142.9,430,142.9Z"
                 />
                 
@@ -167,8 +181,8 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 55,
         borderWidth: 2,
-        borderRadius: 20,
-        borderColor: '#707070',
+        borderRadius: 10,
+        borderColor: Colors[2],
         textAlign: 'left',
         paddingLeft: 10,
     },
@@ -177,7 +191,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: 125,
         height: 60,
-        borderRadius: 15,
+        borderRadius: 10,
         borderWidth: 3,
         borderColor: '#97E06F',
     },

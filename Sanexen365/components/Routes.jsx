@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, SafeAreaView, Keyboard, Animated, Pressable } f
 import { useState, useEffect } from 'react';
 import Connexion from '../connexion/Connexion.jsx';
 import Accueil from '../Accueil.jsx';
+import ListeProjets from './listeChantiers/ListeProjets.jsx';
 import Header from './Header.jsx';
 
 const Stack = createNativeStackNavigator();
@@ -24,7 +25,6 @@ export default function Routes(){
                     <Accueil userLoggedIn={setIsLoggedIn} style={styles.header}/>
                     <Header userLoggedIn={setIsLoggedIn} style={styles.header}/>
                 </>
-                
             }
             
         </NavigationContainer>

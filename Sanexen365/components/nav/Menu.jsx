@@ -2,10 +2,11 @@ import { StyleSheet, View, ScrollView, Text, Animated, Pressable } from "react-n
 import SVGWaves from "../../utils/SVGWaves";
 import { Shadow } from "react-native-shadow-2";
 import { logOut } from "../../connexion/fakeAuth";
+import { Color, Styles, Fonts } from "../../design/design";
 
 export default function Menu({ userLoggedIn, navOpenState, burgerRef, toggleMenu, email, password, setEmail, setPassword }) {
     return(
-        <View style={[styles.menuContainer, {opacity: navOpenState ? 1 : 0}]}>
+        <View style={[styles.menuContainer, {display: navOpenState ? 'flex' : 'none'}]}>
             <SVGWaves 
                 customStyle={styles.bgSvg}
                 customWidth="448"
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         backgroundColor: '#6CA150',
+        marginTop: Styles[2]
     },
     bgSvg: {
         position: 'absolute',

@@ -3,13 +3,13 @@ export default{
     name: 'adressList',
     title: "Liste d'adresse",
     fields: [
-        {
-            type: 'reference',
-            to: [{ type: 'listeChantier'}],
-            name: 'refListeChantier',
-            title: 'Chantier',
-            validation: Rule => Rule.required()
-        },
+        // {
+        //     type: 'reference',
+        //     to: [{ type: 'listeChantier'}],
+        //     name: 'refListeChantier',
+        //     title: 'Chantier',
+        //     validation: Rule => Rule.required()
+        // },
         {
             type: 'array',
             name: 'building',
@@ -35,8 +35,8 @@ export default{
                                     {type: 'string', name: 'pressionValue', title: 'Pression'}
                                 ]
                             },
-                            {type: 'number', name: 'hoseAmount', title: 'Nombre de hose', validation: Rule => Rule.required()},
-                            {type: 'boolean', name: 'antigel', title: 'Antigel?', initialValue: false, validation: Rule => Rule.required()}
+                            {type: 'number', name: 'hoseAmount', title: 'Nombre de hose',},
+                            {type: 'boolean', name: 'antigel', title: 'Antigel?', initialValue: false,}
                         ],
                         hidden: ({ parent }) => parent.plugType !== 'regular'
                     },
