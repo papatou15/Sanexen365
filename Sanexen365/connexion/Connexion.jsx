@@ -16,12 +16,6 @@ const query = `*[_type == "ticket"]{
     status
 }`
 
-async function getQuery(){
-    await Sanity.fetch(query);
-}
-
-console.log(getQuery())
-
 export default function Connexion({ userLoggedIn, email, password, setEmail, setPassword }){
     const fadeAnim = useRef(new Animated.Value(1)).current;
 

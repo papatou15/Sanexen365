@@ -1,10 +1,10 @@
-import { StyleSheet, View, ScrollView, Text, Animated, Pressable } from "react-native";
+import { StyleSheet, View, ScrollView, Text, Animated, Pressable, StatusBar } from "react-native";
 import SVGWaves from "../../utils/SVGWaves";
 import { Shadow } from "react-native-shadow-2";
 import { logOut } from "../../connexion/fakeAuth";
 import { Color, Styles, Fonts } from "../../design/design";
 
-export default function Menu({ userLoggedIn, navOpenState, burgerRef, toggleMenu, email, password, setEmail, setPassword }) {
+export default function Menu({ userLoggedIn, navOpenState, burgerRef, toggleMenu, email, password, setEmail, setPassword, navigation }) {
     return(
         <View style={[styles.menuContainer, {display: navOpenState ? 'flex' : 'none'}]}>
             <SVGWaves 
@@ -17,7 +17,7 @@ export default function Menu({ userLoggedIn, navOpenState, burgerRef, toggleMenu
             />
             <Text style={styles.menuTitle}>Menu</Text>
             <View style={styles.nav}>
-                <Pressable style={styles.navItems}>
+                <Pressable style={styles.navItems} onPress={() => navigation.navigate('ListeProjets')}>
                     <Text style={styles.navText}>Chantiers</Text>
                 </Pressable>
                 <Pressable style={styles.navItems}>
@@ -36,10 +36,10 @@ export default function Menu({ userLoggedIn, navOpenState, burgerRef, toggleMenu
 
 const styles = StyleSheet.create({
     menuContainer: {
-        height: '100%',
+        height: '91%',
         width: '100%',
         backgroundColor: '#6CA150',
-        marginTop: Styles[2]
+        
     },
     bgSvg: {
         position: 'absolute',

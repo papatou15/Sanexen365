@@ -2,23 +2,23 @@ import { StyleSheet, Text, View, ScrollView, SafeAreaView, Keyboard, Animated, P
 import getDate from './utils/getDate';
 import Header from './components/Header';
 
-export default function Accueil({ userLoggedIn }) {
+export default function Accueil({ navigation, email }) {
     const date = getDate();
     
     return(
         <View style={styles.homePage}>
             <View style={styles.welcomeTitle}>
-                <Text style={styles.nameTitle}>Bonjour Antoine</Text>
+                <Text style={styles.nameTitle}>Bonjour {email}</Text>
                 <Text style={styles.date}>{date}</Text>
             </View>
             <ScrollView style={styles.sectionBtnsWrapper} nestedScrollEnabled={true} >
-                <Pressable style={styles.sectionButtons}>
+                <Pressable style={styles.sectionButtons} onPress={() => navigation.navigate('ListeProjets')}>
                     <Text style={styles.sectionBtnsText}>Accéder à la liste des chantiers</Text>
                 </Pressable>
                 <Pressable style={styles.sectionButtons}>
                     <Text style={styles.sectionBtnsText}>Accéder à la planification</Text>
                 </Pressable>
-                <Pressable style={styles.sectionButtons}>
+                <Pressable style={styles.sectionButtons} onPress={() => navigation.navigate('ListeAppels')}>
                     <Text style={styles.sectionBtnsText}>Appels d'urgence</Text>
                 </Pressable>
             </ScrollView>
@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        marginTop: 70
     },
     welcomeTitle: {
         width: '80%',
