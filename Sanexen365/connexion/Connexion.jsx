@@ -1,10 +1,9 @@
 import { StyleSheet, Text, View, TextInput, Pressable, Alert, Animated, SafeAreaView, Button } from 'react-native';
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SVGWaves from '../utils/SVGWaves';
 import { logIn } from './fakeAuth';
-import { Shadow } from 'react-native-shadow-2';
 import { Colors, Styles, Fonts } from '../design/design';
-import Sanity from '../utils/Sanity';
+import client from '../utils/Sanity';
 
 const query = `*[_type == "ticket"]{
     _id,
@@ -17,6 +16,16 @@ const query = `*[_type == "ticket"]{
 }`
 
 export default function Connexion({ userLoggedIn, email, password, setEmail, setPassword }){
+    const [dataFetch, setDataFetch] = useState([]);
+
+    useEffect(() => {
+        client.fetch(query).then(data => {
+            setDataFetch(data)
+        })
+    }), [];
+
+    console.log(dataFetch);
+
     const fadeAnim = useRef(new Animated.Value(1)).current;
 
     const fadeIn = () => {

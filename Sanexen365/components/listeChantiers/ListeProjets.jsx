@@ -1,4 +1,4 @@
-import { View, StyleSheet, FlatList, Text, StatusBar, SafeAreaView } from "react-native";
+import { View, StyleSheet, FlatList, Text, StatusBar, SafeAreaView, Pressable } from "react-native";
 import { Colors, Styles, Fonts } from "../../design/design";
 
 const data = [
@@ -19,21 +19,24 @@ const data = [
     }
 ]
 
-const Item = ({title, description}) => (
-    <View style={styles.item}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>{description}</Text>
-    </View>
-)
 
-export default function ListeProjets(){
+
+export default function ListeProjets({navigation}){
+    const Item = ({title, description}) => (
+        <Pressable style={styles.item} onPress={() => navigation.navigate('Projet')}>
+            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.description}>{description}</Text>
+        </Pressable>
+    )
+
     return(
         <View style={styles.container}>
             <Text style={styles.title}>Liste des projets</Text>
             <FlatList
                 data={data}
-                renderItem={({item}) => <Item title={item.title} description={item.description} />}
+                renderItem={({item}) => <Item title={item.title}/>}
                 keyExtractor={item => item.id}
+                style={styles.projets}
             />
         </View>
     )
@@ -48,5 +51,15 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 50,
+    },
+    projets:{
+        height: '80%',
+        width: '80%'
+    },
+    item: {
+        width: '100%',
+        borderWidth: 3,
+        borderRadius: Styles[0],
+        marginVertical: 5
     }
 })

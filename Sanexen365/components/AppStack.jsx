@@ -5,6 +5,7 @@ import Menu from "./nav/Menu";
 import ListeProjets from './listeChantiers/ListeProjets.jsx';
 import ListeChantiers from './listeChantiers/ListeChantiers.jsx';
 import ListeAppels from "./appelsUrgence/ListeAppels";
+import Projet from "./listeChantiers/Projet";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { View, Text, StyleSheet } from 'react-native';
@@ -45,6 +46,7 @@ export default function AppStack({ userLoggedIn, email, setEmail, password, setP
                 <Stack.Screen name="ListeChantiers" component={ListeChantiers} options={{title: 'Liste des chantiers'}}/>
                 <Stack.Screen name="ListeAppels" component={ListeAppels} options={{title: "Liste des appels d'urgence"}}/>
                 <Stack.Screen name="Menu" component={Menu} options={{title: "Menu"}}/>
+                <Stack.Screen name="Projet" component={Projet} options={{title: "Projet"}}/>
 
             </Stack.Navigator>
             {
