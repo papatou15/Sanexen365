@@ -6,6 +6,10 @@ import ListeProjets from './listeChantiers/ListeProjets.jsx';
 import ListeChantiers from './listeChantiers/ListeChantiers.jsx';
 import ListeAppels from "./appelsUrgence/ListeAppels";
 import Projet from "./listeChantiers/Projet";
+import Chantier from "./listeChantiers/Chantier";
+import NouvelleListeAdresse from "./listeChantiers/NouvelleListeAdresse";
+import NouvelleAdresse from "./listeChantiers/NouvelleAdresse";
+import ListeAdresse from "./listeChantiers/ListeAdresses";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { View, Text, StyleSheet } from 'react-native';
@@ -47,6 +51,11 @@ export default function AppStack({ userLoggedIn, email, setEmail, password, setP
                 <Stack.Screen name="ListeAppels" component={ListeAppels} options={{title: "Liste des appels d'urgence"}}/>
                 <Stack.Screen name="Menu" component={Menu} options={{title: "Menu"}}/>
                 <Stack.Screen name="Projet" component={Projet} options={{title: "Projet"}}/>
+                <Stack.Screen name="Chantier" component={Chantier} options={{title: "Chantier"}}/>
+                <Stack.Screen name="NouvelleListeAdresse" component={NouvelleListeAdresse} options={{title: "Nouvelle liste d'adresse"}}/>
+                <Stack.Screen name="NouvelleAdresse" component={NouvelleAdresse} options={{title: "Nouvelle adresse"}}/>
+                <Stack.Screen name="ListeAdresse" component={ListeAdresse} options={{title: "Liste des adresses"}}/>
+
 
             </Stack.Navigator>
             {

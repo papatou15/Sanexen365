@@ -18,13 +18,13 @@ const query = `*[_type == "ticket"]{
 export default function Connexion({ userLoggedIn, email, password, setEmail, setPassword }){
     const [dataFetch, setDataFetch] = useState([]);
 
-    useEffect(() => {
-        client.fetch(query).then(data => {
-            setDataFetch(data)
-        })
-    }), [];
+    // useEffect(() => {
+    //     client.fetch(query).then(data => {
+    //         setDataFetch(data)
+    //     })
+    // }, []);
 
-    console.log(dataFetch);
+    // console.log(dataFetch);
 
     const fadeAnim = useRef(new Animated.Value(1)).current;
 
