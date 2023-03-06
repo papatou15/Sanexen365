@@ -3,13 +3,13 @@ export default{
     name: 'adressList',
     title: "Liste d'adresse",
     fields: [
-        // {
-        //     type: 'reference',
-        //     to: [{ type: 'listeChantier'}],
-        //     name: 'refListeChantier',
-        //     title: 'Chantier',
-        //     validation: Rule => Rule.required()
-        // },
+        {
+            type: 'reference',
+            to: [{ type: 'listeChantier'}],
+            name: 'refListeChantier',
+            title: 'Chantier',
+            validation: Rule => Rule.required()
+        },
         {
             type: 'array',
             name: 'building',
@@ -18,7 +18,7 @@ export default{
                 type: 'object',
                 fields: [
                     {type: 'string', name: 'adress', title: 'Adresse/No Civique', validation: Rule => Rule.required()},
-                    {type: 'string', name: 'buildingType', title: 'Type de batiment', options: {list: [{title: 'Maison/Appartement', value: 'house'}, {title: 'Industriel/Commerciel', value: 'industrial'}]}, validation: Rule => Rule.required()},
+                    {type: 'string', name: 'buildingType', title: 'Type de batiment', options: {list: [{title: 'Maison/Appartement', value: 'house'}, {title: 'Industriel/Commercial', value: 'industrial'}]}, validation: Rule => Rule.required()},
                     {type: 'boolean', name: 'pluggedStatus', title: 'Branchement fait?', initialValue: false, validation: Rule => Rule.required()},
                     {type: 'string', name: 'plugType', title: 'Branchement direct/régulier', options: {list: [{title: 'Direct', value: 'direct'}, {title: 'Régulier', value: 'regular'}]}, validation: Rule => Rule.required()},
                     {
@@ -31,12 +31,12 @@ export default{
                                 type: 'object',
                                 name: 'debitPression',
                                 fields: [
-                                    {type: 'string', name: 'debitValue', title: 'Débit'},
-                                    {type: 'string', name: 'pressionValue', title: 'Pression'}
+                                    {type: 'number', name: 'debitValue', title: 'Débit'},
+                                    {type: 'number', name: 'pressionValue', title: 'Pression'}
                                 ]
                             },
                             {type: 'number', name: 'hoseAmount', title: 'Nombre de hose',},
-                            {type: 'boolean', name: 'antigel', title: 'Antigel?', initialValue: false,}
+                            {type: 'boolean', name: 'antigel', title: 'Antigel?', initialValue: false}
                         ],
                         hidden: ({ parent }) => parent.plugType !== 'regular'
                     },

@@ -24,6 +24,7 @@ export default function Projet({route, navigation}) {
                 </View>
             </View>
             <ScrollView contentContainerStyle={styles.listeChantier}>
+                
                 {
                     listeChantier.map(unChantier => 
                         (unChantier.project.projectCode == projectCode)
@@ -33,8 +34,8 @@ export default function Projet({route, navigation}) {
                             name: unChantier.name,
                             codeProjet: unChantier.project.projectCode,
                             adressList: unChantier.refAdressList,
-                            contremaitres: unChantier.foreman,
-                            plans: unChantier.plan
+                            contremaitres: (unChantier.foreman != undefined) ? unChantier.foreman : "Indisponible",
+                            plans: (unChantier.plan != undefined) ? unChantier.plan : "Indisponible",
                             })}>
                             <Text style={styles.chantierText}>{unChantier.name}</Text>
                         </Pressable>

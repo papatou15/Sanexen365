@@ -12,13 +12,15 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/8697220b-abea-43e4-a990-04fa5b274ff0"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sledgebuilder.Sanexen365"
     },
     "android": {
       "adaptiveIcon": {
@@ -34,6 +36,9 @@
       "eas": {
         "projectId": "8697220b-abea-43e4-a990-04fa5b274ff0"
       }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }

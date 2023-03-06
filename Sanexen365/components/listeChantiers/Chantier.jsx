@@ -1,6 +1,14 @@
 import { View, SafeAreaView, ScrollView, Text, StyleSheet, Pressable } from "react-native";
+import client from "../../utils/Sanity";
+import { useState } from "react";
+import { Button } from "@rneui/base";
+import { Icon } from "@rneui/base";
 
 export default function Chantier({navigation, route}){
+
+    /* Animation de loading */
+
+    const [isLoading, setIsLoading] = useState(false);
 
     const {_id,
         name,
@@ -8,9 +16,69 @@ export default function Chantier({navigation, route}){
         adressList,
         contremaitres,
         plans} = route.params;
+
+    const newDoc = {
+        _type: 'adressList',
+        refListeChantier: {
+            _type: 'reference',
+            _ref: _id
+        }
+    }
+
+    async function updateRefListeAdresse(newId){
+        client.patch(_id)
+        .set({refAdressList: {
+            _type: 'reference',
+            _ref: newId
+        }})
+        .commit()
+    }
+
+    async function createNewDoc(){
+        setIsLoading(true);
+        client.create(newDoc).then(response => {
+            updateRefListeAdresse(response._id)
+            navigation.navigate('NouvelleListeAdresse', {docId: response._id}), 
+            console.log(response),
+            setIsLoading(false);
+        }).catch(error => console.error(error))
+    }
         
     return(
         <SafeAreaView>
+            {
+                (isLoading == true) ?
+                <View style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.2)",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: '100%',
+                    height: '100%',
+                    position: "absolute"
+                }}>
+                    <Button
+                        type="clear"
+                        buttonStyle={{ width: 200, height: 200 }}
+                        containerStyle={{ margin: 5 }}
+                        disabledStyle={{
+                            borderWidth: 2,
+                            borderColor: "#0F0"
+                        }}
+                        disabledTitleStyle={{ color: "#0F0" }}
+                        linearGradientProps={null}
+                        icon={<Icon name="react" size={15} color="#0F0" />}
+                        iconContainerStyle={{ background: "#000" }}
+                        loading
+                        loadingProps={{ animating: true }}
+                        loadingStyle={{ backgroundColor: "rgba(255, 255, 255, 0.7)", transform: [{scale: 3}] }}
+                        titleProps={{}}
+                        titleStyle={{ marginHorizontal: 5 }}
+                    />
+                </View>
+                
+                :
+                <></>
+            }
             <ScrollView>
                 <View>
                     <Text style={styles.title}>{name}</Text>
@@ -38,12 +106,31 @@ export default function Chantier({navigation, route}){
                 <View style={styles.majorSection}>
                     <Text style={styles.sectionTitle}>Liste des maisons</Text>
                     <View style={styles.wrapperBoutons}>
-                        <Pressable style={styles.listeMaisonBouton} onPress={() => navigation.navigate('ListeAdresse')} disabled={(adressList != null) ? false : true}>
-                            <Text>Liste Existante</Text>
-                        </Pressable>
-                        <Pressable style={styles.listeMaisonBouton} onPress={() => navigation.navigate('NouvelleListeAdresse')}>
-                            <Text>Nouvelle Liste</Text>
-                        </Pressable>
+                        {
+                            (adressList == null) ?
+                            <Pressable 
+                                style={styles.listeMaisonBouton} 
+                                onPress={() => {
+                                    createNewDoc()
+                                }}
+                            >
+                                <Text>Nouvelle Liste</Text>
+                            </Pressable>
+                            :
+                            <Pressable 
+                                style={styles.listeMaisonBouton} 
+                                onPress={() => 
+                                    navigation.navigate('ListeAdresse', {
+                                        _id: _id,
+                                        adressList: adressList
+                                    })}
+                            >
+                                <Text>Liste Existante</Text>
+                            </Pressable>
+
+                        }
+                        
+                        
                     </View>
                 </View>
 
@@ -53,6 +140,8 @@ export default function Chantier({navigation, route}){
                     <Text style={styles.sectionTitle}>Plans</Text>
                     <View style={styles.wrapperPlans}>
                         {
+                            (plans != "Indisponible") ?
+
                             plans.map(unPlan => {
                                 (unPlan != null)
                                 ?
@@ -62,6 +151,8 @@ export default function Chantier({navigation, route}){
                                 :
                                 <Text>Aucun Plans</Text>
                             })
+                            :
+                            <Text>Aucun Plans</Text>
                         }
                     </View>
                 </View>
