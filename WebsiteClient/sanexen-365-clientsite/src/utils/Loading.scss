@@ -1,0 +1,13 @@
+.loadingWrapper{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: rgb(242, 242, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loadingTitle{
+    text-shadow: 0 0 10px black;
+}
