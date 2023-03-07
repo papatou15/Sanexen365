@@ -5,26 +5,8 @@ import { logIn } from './fakeAuth';
 import { Colors, Styles, Fonts } from '../design/design';
 import client from '../utils/Sanity';
 
-const query = `*[_type == "ticket"]{
-    _id,
-    adress,
-    nom,
-    issue,
-    issueBreakOptions,
-    description,
-    status
-}`
-
 export default function Connexion({ userLoggedIn, email, password, setEmail, setPassword }){
     const [dataFetch, setDataFetch] = useState([]);
-
-    // useEffect(() => {
-    //     client.fetch(query).then(data => {
-    //         setDataFetch(data)
-    //     })
-    // }, []);
-
-    // console.log(dataFetch);
 
     const fadeAnim = useRef(new Animated.Value(1)).current;
 

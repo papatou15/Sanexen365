@@ -14,7 +14,7 @@ import ListeAdresse from "./listeChantiers/ListeAdresses";
 import Adresse from "./listeChantiers/Adresse";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { useState, useRef } from "react";
 import { Colors } from "../design/design";
 

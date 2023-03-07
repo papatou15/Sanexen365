@@ -1,6 +1,5 @@
-import { StyleSheet, View, ScrollView, Text, Animated, Pressable, StatusBar } from "react-native";
+import { StyleSheet, View, Text, Pressable } from "react-native";
 import SVGWaves from "../../utils/SVGWaves";
-import { Shadow } from "react-native-shadow-2";
 import { logOut } from "../../connexion/fakeAuth";
 import { Color, Styles, Fonts } from "../../design/design";
 
@@ -17,7 +16,7 @@ export default function Menu({ userLoggedIn, navOpenState, burgerRef, toggleMenu
             />
             <Text style={styles.menuTitle}>Menu</Text>
             <View style={styles.nav}>
-                <Pressable style={styles.navItems} onPress={() => navigation.navigate('ListeProjets')}>
+                <Pressable style={styles.navItems} onPress={() => {navigation.navigate('ListeProjets'), toggleMenu}}>
                     <Text style={styles.navText}>Chantiers</Text>
                 </Pressable>
                 <Pressable style={styles.navItems}>
