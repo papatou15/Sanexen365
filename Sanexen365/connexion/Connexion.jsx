@@ -11,7 +11,7 @@ export default function Connexion({ userLoggedIn, email, password, setEmail, set
     const fadeAnim = useRef(new Animated.Value(1)).current;
 
     const fadeIn = () => {
-    // Will change fadeAnim value to 1 in 5 seconds
+    // Will change fadeAnim value to 1 in 1 seconds
     Animated.timing(fadeAnim, {
             toValue: 0,
             duration: 1000,
@@ -20,7 +20,7 @@ export default function Connexion({ userLoggedIn, email, password, setEmail, set
     };
 
     const fadeOut = () => {
-    // Will change fadeAnim value to 0 in 3 seconds
+    // Will change fadeAnim value to 0 in 0.1 seconds
     Animated.timing(fadeAnim, {
             toValue: 1,
             duration: 100,

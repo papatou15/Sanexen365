@@ -358,7 +358,7 @@ const styles = StyleSheet.create({
     },
     inputTitle: {
         fontSize: 25,
-        margin: 10
+        margin: 10,
     },
     input: {
         borderWidth: 3,

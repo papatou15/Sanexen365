@@ -1,6 +1,5 @@
-import { StyleSheet, Text, View, ScrollView, SafeAreaView, Keyboard, Animated, Pressable } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native';
 import getDate from './utils/getDate';
-import Header from './components/Header';
 
 export default function Accueil({ navigation, email }) {
     const date = getDate();
@@ -12,13 +11,13 @@ export default function Accueil({ navigation, email }) {
                 <Text style={styles.date}>{date}</Text>
             </View>
             <ScrollView style={styles.sectionBtnsWrapper} nestedScrollEnabled={true} >
-                <Pressable style={styles.sectionButtons} onPress={() => navigation.navigate('ListeProjets')}>
+                <Pressable style={({pressed}) => [{backgroundColor: pressed ? "#707070" : "white"}, styles.sectionButtons]} onPress={() => navigation.navigate('ListeProjets')}>
                     <Text style={styles.sectionBtnsText}>Accéder à la liste des chantiers</Text>
                 </Pressable>
-                <Pressable style={styles.sectionButtons}>
+                <Pressable style={({pressed}) => [{backgroundColor: pressed ? "#707070" : "white"}, styles.sectionButtons]}>
                     <Text style={styles.sectionBtnsText}>Accéder à la planification</Text>
                 </Pressable>
-                <Pressable style={styles.sectionButtons} onPress={() => navigation.navigate('ListeAppels')}>
+                <Pressable style={({pressed}) => [{backgroundColor: pressed ? "#707070" : "white"}, styles.sectionButtons]} onPress={() => navigation.navigate('ListeAppels')}>
                     <Text style={styles.sectionBtnsText}>Appels d'urgence</Text>
                 </Pressable>
             </ScrollView>

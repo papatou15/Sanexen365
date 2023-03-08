@@ -12,6 +12,7 @@ import NouvelleListeAdresse from "./listeChantiers/NouvelleListeAdresse";
 import NouvelleAdresse from "./listeChantiers/NouvelleAdresse";
 import ListeAdresse from "./listeChantiers/ListeAdresses";
 import Adresse from "./listeChantiers/Adresse";
+import Appel from "./appelsUrgence/Appel";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet } from 'react-native';
@@ -59,6 +60,7 @@ export default function AppStack({ userLoggedIn, email, setEmail, password, setP
                 <Stack.Screen name="ListeAdresse" component={ListeAdresse} options={{title: "Liste des adresses"}}/>
                 <Stack.Screen name="AjoutMaison" component={AjoutMaison} options={{title: "Ajout d'une nouvelle adresse"}}/>
                 <Stack.Screen name="Adresse" component={Adresse} options={{title: "Adresse"}} />
+                <Stack.Screen name="Appel" component={Appel} options={{title: "Appel"}} />
 
             </Stack.Navigator>
             {

@@ -9,6 +9,8 @@ export default function useFetchData(setAppData, isLoaded, setIsLoaded){
                     _id,
                     adress,
                     nom,
+                    phone,
+                    email,
                     issue,
                     issueBreakOptions,
                     description,

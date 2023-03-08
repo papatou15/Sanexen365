@@ -1,4 +1,4 @@
-import { View, StyleSheet, FlatList, Text, ScrollView, SafeAreaView, Pressable } from "react-native";
+import { View, StyleSheet, Text, ScrollView, SafeAreaView, Pressable } from "react-native";
 import { Colors, Styles, Fonts } from "../../design/design";
 import { DataContext } from "../../utils/DataContext";
 import { useContext } from "react";
