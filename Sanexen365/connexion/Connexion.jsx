@@ -3,10 +3,22 @@ import React, { useState, useEffect, useRef } from 'react';
 import SVGWaves from '../utils/SVGWaves';
 import { logIn } from './fakeAuth';
 import { Colors, Styles, Fonts } from '../design/design';
-import client from '../utils/Sanity';
 
+
+/**
+ * 
+ * Écran de connexion.
+ * 
+ * Login factice. La page sert seulement à fetch les données quand le bouton "Connexion" est appuyé
+ * 
+ * @param {state} userLoggedIn Booléenne pour savoir si l'utilisateur est logged in ou non
+ * @param {string} email Non fonctionnel pour l'instant. email de la personne loggé 
+ * @param {string} password Non fonctionnel pour l'instant. password de la personne loggé 
+ * @param {state} setEmail Capture l'email
+ * @param {state} setPassword Capture le password
+ * @returns La page de connexion
+ */
 export default function Connexion({ userLoggedIn, email, password, setEmail, setPassword }){
-    const [dataFetch, setDataFetch] = useState([]);
 
     const fadeAnim = useRef(new Animated.Value(1)).current;
 

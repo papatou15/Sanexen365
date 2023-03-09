@@ -1,6 +1,16 @@
 import client from "./Sanity";
 import { useEffect } from "react";
 
+/**
+ * Fonction pour aller chercher les données dans le cloud de Sanity.io
+ * 
+ * Commence par fetch les data par des query GROQ, puis les retourne dans setAppData, qui est
+ * défini dans App.js. Refresh le component quand les trois conditions sont remplies.
+ * 
+ * @param {state} setAppData Inscrit les données retournées dans la promesse
+ * @param {boolean} isLoaded Vérifie si les data sont fetch ou pas
+ * @param {state} setIsLoaded Change le state de isLoaded
+ */
 export default function useFetchData(setAppData, isLoaded, setIsLoaded){
     useEffect(() => {
         if (!isLoaded){

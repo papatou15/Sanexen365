@@ -22,6 +22,16 @@ import { Colors } from "../design/design";
 
 const Stack = createNativeStackNavigator();
 
+
+/**
+ * Navigation de l'app
+ * 
+ * Ce composant permet la navigation dans l'application
+ * Dans le NavigationContainer, tout les Stacks (pages) sont définis à l'intérieur du navigateur.
+ * Le menu burger s'affiche aussi à partir de cette page.
+ * Le header est aussi géré par le Stack Navigator.
+ * 
+ */
 export default function AppStack({ userLoggedIn, email, setEmail, password, setPassword }) {
 
 

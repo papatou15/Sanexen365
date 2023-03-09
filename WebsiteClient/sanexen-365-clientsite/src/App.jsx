@@ -2,12 +2,18 @@ import 'normalize.css'
 import './App.scss';
 import client from './utils/Sanity';
 import { useState } from 'react';
-import useFetchData from './utils/useFetchData';
 import Loading from './utils/Loading';
 
 function App() {
+	/**
+	 * Formulaire sous forme de one-pager React.js 
+	 * 
+	 * Ce site web permet de remplir un formulaire qui va créer un ticket pour un problème dans Sanity.io.
+	 * 
+	 * */ 
 
-	// Déclaration pour l'enregistrement des values
+
+	// Déclarations pour l'enregistrement des values
 
 	const [nom, setNom] = useState("Pas de nom");
 	const [adresse, setAdress] = useState("");
@@ -20,6 +26,23 @@ function App() {
 
 	const [isLoaded, setIsLoaded] = useState(false);
 
+
+	/**
+	 * 
+	 * Fonction pour l'envoie de donnée
+	 * 
+	 * createTicket inscrit les données recueillies dans le formulaire dans un format de donnée JSON correspondant aux champs dans Sanity.io.
+	 * Puis, client.create crée le document, envoie les données au serveur et retourne le document créé et alerte l'utilisateur de la réussite.
+	 * 
+	 * @param {string} nom 
+	 * @param {string} adresse 
+	 * @param {string} phone 
+	 * @param {string} email 
+	 * @param {string} breakProblem 
+	 * @param {string} nowaterProblem 
+	 * @param {string} problemInfo 
+	 * @param {string} problemChoisi 
+	 */
 	function SendData(nom, adresse, phone, email, breakProblem, nowaterProblem, problemInfo, problemChoisi ){
 		const createTicket = {
 			_type: 'ticket',
@@ -33,19 +56,8 @@ function App() {
 			description: problemInfo,
 			status: 'new'
 		}
-		console.log("CreateTicket: ", createTicket)
-		client.create(createTicket).then(response => console.log(response));
+		client.create(createTicket).then(response => console.log(response), alert("Formulaire reçu!"));
 	}
-
-	// const [appData, setAppData] = useState({
-	// 	ticket: []
-	// });
-
-	// useFetchData(setAppData, isLoaded, setIsLoaded);
-
-	// const data = appData.ticket;
-
-	// console.log(data);
 
 	return (
 		<div className="App">
@@ -140,17 +152,6 @@ function App() {
 						<button type="button" className='sendButton' onClick={() => SendData(nom, adresse, phone, email, breakProblem, nowaterProblem, problemInfo, problemChoisi)}>Envoyer</button>
 					</div>
 			}
-			{console.log(
-				"Nom: " + nom + 
-				" Adresse: " + adresse + 
-				" Phone: " + phone + 
-				" Email: " + email + 
-				" BreakProblems: " + breakProblem + 
-				" ProblemeChoisi: " + problemChoisi + 
-				" BreakProblem: " + breakProblem +
-				" NowaterProblem: " + nowaterProblem + 
-				" ProblemInfo: " + problemInfo
-			)}
 		</div>
 	);
 }

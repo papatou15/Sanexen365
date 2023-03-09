@@ -1,5 +1,14 @@
 import {createClient} from '@sanity/client'
 
+/**
+ * Client pour se connecter au projet Sanity.io
+ * 
+ * @param {string} projectId ID du projet
+ * @param {string} dataset Nom du dataset à utiliser
+ * @param {boolean} useCdn Détermine si la requête accède au cache ou non (permet de fetch plus rapidement des données plus récente)
+ * @param {string} apiVersion Date de l'API. Inscrire la date la plus récente pour utiliser la dernière version
+ * @param {token} token Permet d'avoir accès à la base de donnée
+ */
 const client = createClient({
   projectId: 'au6d1rq5',
   dataset: 'work',

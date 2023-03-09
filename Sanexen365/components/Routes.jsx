@@ -3,6 +3,11 @@ import { useState, useEffect } from 'react';
 import Connexion from '../connexion/Connexion.jsx';
 import AppStack from './AppStack.jsx';
 
+
+/**
+ * Simple toggle entre la connexion et l'app
+ * 
+ */
 export default function Routes(){
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [email, setEmail] = useState("");

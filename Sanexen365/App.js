@@ -12,6 +12,10 @@ import 'react-native-url-polyfill/auto'
 export default function App() {
 
   const [isLoaded, setIsLoaded] = useState(false);
+
+  /**
+   * Set les champs de données fetch dans useFetchData
+   */
   const [appData, setAppData] = useState({
     ticket: [],
     listeChantier: [],
